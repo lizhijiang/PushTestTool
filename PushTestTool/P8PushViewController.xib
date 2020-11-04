@@ -69,7 +69,7 @@
                         <constraint firstAttribute="height" constant="21" id="9gN-Nz-0AM"/>
                         <constraint firstAttribute="width" constant="120" id="PLP-6g-oEi"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="KeyId" bezelStyle="round" id="W5J-Xd-HQu">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="KeyID" bezelStyle="round" id="W5J-Xd-HQu">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -81,7 +81,7 @@
                         <constraint firstAttribute="width" constant="120" id="0JM-7c-T33"/>
                         <constraint firstAttribute="height" constant="21" id="4ie-Lh-lRX"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="TeamId" bezelStyle="round" id="ros-jD-0lI">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="TeamID" bezelStyle="round" id="ros-jD-0lI">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -107,8 +107,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r2Z-QA-eeG">
-                    <rect key="frame" x="18" y="220" width="63" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Bundel ID" id="MsQ-Tm-ajT">
+                    <rect key="frame" x="18" y="220" width="67" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Bundel ID:" id="MsQ-Tm-ajT">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

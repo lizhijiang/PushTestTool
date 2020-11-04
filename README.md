@@ -2,7 +2,7 @@
 A sample tool for APNs testing on Mac OS
 
 -
-![image](https://github.com/lizhijiang/PushTestTool/blob/master/pushtesttool.png?raw=true)
+![image](https://github.com/lizhijiang/PushTestTool/blob/master/pushtesttool.png?raw=false)
 
 
 -
