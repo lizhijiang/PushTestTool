@@ -2,8 +2,14 @@
 A sample tool for APNs testing on Mac OS
 
 -
-![image](https://github.com/lizhijiang/PushTestTool/blob/master/pushtesttool.png?raw=false)
+####Token base push
 
+![image](https://raw.githubusercontent.com/lizhijiang/PushTestTool/master/p8view.png =500)
+
+
+####Certificate base push
+
+![image](https://raw.githubusercontent.com/lizhijiang/PushTestTool/master/p12view.png =500)
 
 -
 base on https://github.com/kylebrowning/APNSwift
