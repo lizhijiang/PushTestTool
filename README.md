@@ -3,12 +3,12 @@ A sample tool for APNs testing on Mac OS
 
 -
 
-#### Token base push
+#### Token-based 
 
 ![image](https://raw.githubusercontent.com/lizhijiang/PushTestTool/master/p8view.png)
 
 
-#### Certificate base push
+#### Certificate-based 
 
 ![image](https://raw.githubusercontent.com/lizhijiang/PushTestTool/master/p12view.png)
 
