@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,7 +38,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6gg-1l-u0w">
-                    <rect key="frame" x="114" y="314" width="319" height="25"/>
+                    <rect key="frame" x="114" y="313" width="320" height="25"/>
                     <popUpButtonCell key="cell" type="push" title="请选择证书(.p12)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" pullsDown="YES" selectedItem="j4R-46-P04" id="dyp-Ni-xMi">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -75,7 +75,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="373-N8-TBL">
-                    <rect key="frame" x="18" y="238" width="67" height="16"/>
+                    <rect key="frame" x="18" y="239" width="67" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Bundel ID:" id="JAp-c3-0Yh">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -94,7 +94,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yCc-Ot-1zL">
-                    <rect key="frame" x="18" y="197" width="84" height="16"/>
+                    <rect key="frame" x="18" y="198" width="84" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="DeviceToken:" id="cLN-W9-pRS">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -113,7 +113,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ay4-xi-MrX">
-                    <rect key="frame" x="18" y="156" width="61" height="16"/>
+                    <rect key="frame" x="18" y="157" width="61" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="通知内容:" id="R7Y-FE-rN0">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -159,7 +159,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="i1j-5h-k7P"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="App data(Optional)" bezelStyle="round" id="b4r-qO-AZC">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Payload data(Optional)" bezelStyle="round" id="b4r-qO-AZC">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -185,7 +185,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p3S-P3-CRl">
-                    <rect key="frame" x="115" y="25" width="80" height="25"/>
+                    <rect key="frame" x="114" y="24" width="82" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="75" id="cMa-tc-rVz"/>
                     </constraints>
@@ -201,7 +201,7 @@
                     </popUpButtonCell>
                 </popUpButton>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EZN-Qi-5cn">
-                    <rect key="frame" x="212" y="21" width="112" height="32"/>
+                    <rect key="frame" x="211" y="21" width="114" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="j2A-4a-hNN"/>
                     </constraints>
@@ -211,7 +211,7 @@
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uLT-Na-bmg">
-                    <rect key="frame" x="324" y="21" width="112" height="32"/>
+                    <rect key="frame" x="323" y="21" width="114" height="33"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="CRa-TI-p54"/>
                         <constraint firstAttribute="height" constant="21" id="rX8-4J-Y1T"/>

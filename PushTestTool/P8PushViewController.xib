@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,7 +31,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v2f-Xj-8LR">
-                    <rect key="frame" x="114" y="291" width="319" height="25"/>
+                    <rect key="frame" x="114" y="290" width="320" height="25"/>
                     <popUpButtonCell key="cell" type="push" title="请选择证书(.p8)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" pullsDown="YES" selectedItem="UCj-8c-bHC" id="7kM-vl-Bab">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -172,7 +172,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="SqD-8x-3mn"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="App data(Optional)" bezelStyle="round" id="TaQ-3e-TEU">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Payload data(Optional)" bezelStyle="round" id="TaQ-3e-TEU">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -198,7 +198,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vh5-yB-xzB">
-                    <rect key="frame" x="115" y="25" width="80" height="25"/>
+                    <rect key="frame" x="114" y="24" width="82" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="75" id="Abb-Hz-CMx"/>
                     </constraints>
@@ -214,7 +214,7 @@
                     </popUpButtonCell>
                 </popUpButton>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tM8-Wg-xed">
-                    <rect key="frame" x="324" y="21" width="112" height="32"/>
+                    <rect key="frame" x="323" y="21" width="114" height="33"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="07z-AX-1wf"/>
                         <constraint firstAttribute="width" constant="100" id="1pS-2n-1fo"/>
@@ -228,7 +228,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zrO-bR-850">
-                    <rect key="frame" x="212" y="21" width="112" height="32"/>
+                    <rect key="frame" x="211" y="21" width="114" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="XH2-fI-WVq"/>
                     </constraints>

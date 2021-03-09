@@ -166,17 +166,17 @@ class P8PushViewController: NSViewController, NSMenuDelegate {
         self.pushSubtitle = self.subtitleTextField.stringValue
         self.pushBody = self.bodyTextField.stringValue
         
-        let appData = self.appDataTextField.stringValue
+        let payload = self.appDataTextField.stringValue
         
         guard let title = self.pushTitle, let body = self.pushBody else {
             return
         }
         
         struct BasicNotification: APNSwiftNotification {
-            let appdata: String
+            let payload: String
             let aps: APNSwiftPayload
-            init(appdata: String, aps: APNSwiftPayload) {
-                self.appdata = appdata
+            init(payload: String, aps: APNSwiftPayload) {
+                self.payload = payload
                 self.aps = aps
             }
         }
@@ -184,7 +184,7 @@ class P8PushViewController: NSViewController, NSMenuDelegate {
         do {
             
             let aps = APNSwiftPayload(alert: .init(title: title, subtitle: self.pushSubtitle ?? "", body: body), badge: 1, hasContentAvailable: true)
-            try apns.send(BasicNotification(appdata: appData, aps: aps), pushType: .alert, to: deviceToken).wait()
+            try apns.send(BasicNotification(payload: payload, aps: aps), pushType: .alert, to: deviceToken).wait()
             self.errorLabel.stringValue = ""
             
         } catch {
