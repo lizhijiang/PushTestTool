@@ -10,6 +10,15 @@ import APNSwift
 import NIO
 import JWTKit
 
+struct BasicNotification: APNSwiftNotification {
+    let payload: String
+    let aps: APNSwiftPayload
+    init(payload: String, aps: APNSwiftPayload) {
+        self.payload = payload
+        self.aps = aps
+    }
+}
+
 class P8PushViewController: NSViewController, NSMenuDelegate {
 
     @IBOutlet weak var certSelectPopUpButton: NSPopUpButton!
@@ -30,14 +39,6 @@ class P8PushViewController: NSViewController, NSMenuDelegate {
     
     var openPanel: NSOpenPanel?
     var certFilePath: String?
-    var keyId: String?
-    var teamId: String?
-    var deviceToken: String?
-    var bundelId: String?
-    
-    var pushTitle: String?
-    var pushSubtitle: String?
-    var pushBody: String?
     
     var apnsConnection: APNSwiftConnection?
     var eventGroup: MultiThreadedEventLoopGroup?
@@ -47,8 +48,8 @@ class P8PushViewController: NSViewController, NSMenuDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.envSelectPopUpButton.menu?.delegate = self
-        self.connectButton.action = #selector(connectAction)
+        envSelectPopUpButton.menu?.delegate = self
+        switchConnectButton(isConnected: false)
         
     }
     
@@ -58,19 +59,19 @@ class P8PushViewController: NSViewController, NSMenuDelegate {
     
     override func viewDidDisappear() {
         
-        self.errorLabel.stringValue = ""
+        errorLabel.stringValue = ""
         disconnectAction()
         
     }
     
     //MARK: NSMenuDelegate
     func menuWillOpen(_ menu: NSMenu) {
-        self.lastEnv = self.envSelectPopUpButton.selectedTag() == 0 ? .sandbox : .production
+        lastEnv = envSelectPopUpButton.selectedTag() == 0 ? .sandbox : .production
     }
     
     func menuDidClose(_ menu: NSMenu) {
-        let currentEnv: APNSwiftConfiguration.Environment = self.envSelectPopUpButton.selectedTag() == 0 ? .sandbox : .production
-        if self.lastEnv == currentEnv {
+        let currentEnv: APNSwiftConfiguration.Environment = envSelectPopUpButton.selectedTag() == 0 ? .sandbox : .production
+        if lastEnv == currentEnv {
             return
         }
         disconnectAction()
@@ -78,11 +79,11 @@ class P8PushViewController: NSViewController, NSMenuDelegate {
     
     //MARK: Actions
     @IBAction func certSelectAction(_ sender: Any) {
-        self.openPanel = NSOpenPanel()
-        self.openPanel?.canChooseFiles = true
-        self.openPanel?.canChooseDirectories = true
-        self.openPanel?.allowedFileTypes = ["p8"]
-        self.openPanel?.begin { [weak self] result in
+        openPanel = NSOpenPanel()
+        openPanel?.canChooseFiles = true
+        openPanel?.canChooseDirectories = true
+        openPanel?.allowedFileTypes = ["p8"]
+        openPanel?.begin { [weak self] result in
             if result.rawValue == 1 {
                 if let path = self?.openPanel?.urls.first?.path {
                     self?.certFilePath = path
@@ -95,23 +96,25 @@ class P8PushViewController: NSViewController, NSMenuDelegate {
     
     @objc
     func connectAction() {
+        let keyId = keyIdTextField.stringValue
+        let teamId = teamIdTextField.stringValue
+        let bundelId = bundelIdTextField.stringValue
         
-        self.keyId = self.keyIdTextField.stringValue
-        self.teamId = self.teamIdTextField.stringValue
-        
-        guard let certPath = self.certFilePath, let keyId = self.keyId, let teamId = self.teamId else {
+        guard let certPath = self.certFilePath else {
+            errorLabel.stringValue = "cert path error!"
             return
         }
         
-        self.bundelId = self.bundelIdTextField.stringValue
-        
-        guard let bundelId = self.bundelId else {
+        guard keyId.count > 0, teamId.count > 0, bundelId.count > 0 else {
+            errorLabel.stringValue = "params error!"
             return
         }
+        
+        errorLabel.stringValue = ""
         
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
         
-        let environment: APNSwiftConfiguration.Environment = self.envSelectPopUpButton.selectedTag() == 1 ? .production : .sandbox
+        let environment: APNSwiftConfiguration.Environment = envSelectPopUpButton.selectedTag() == 1 ? .production : .sandbox
         do {
             let apnsConfig = try APNSwiftConfiguration(authenticationMethod:
                                                             .jwt(key: .private(filePath: certPath),
@@ -120,16 +123,16 @@ class P8PushViewController: NSViewController, NSMenuDelegate {
                                                         topic: bundelId,
                                                         environment: environment)
             
-            self.apnsConnection = try APNSwiftConnection.connect(configuration: apnsConfig, on: group.next()).wait()
-            self.eventGroup = group
+            apnsConnection = try APNSwiftConnection.connect(configuration: apnsConfig, on: group.next()).wait()
+            eventGroup = group
             
-            self.switchConnectButton(isConnected: true)
-            self.pushButton.isEnabled = true
-            self.errorLabel.stringValue = ""
+            switchConnectButton(isConnected: true)
+            pushButton.isEnabled = true
+            errorLabel.stringValue = ""
             
         } catch {
-            self.pushButton.isEnabled = false
-            self.errorLabel.stringValue = "\(error)"
+            pushButton.isEnabled = false
+            errorLabel.stringValue = "\(error)"
             print(error)
         }
         
@@ -137,13 +140,13 @@ class P8PushViewController: NSViewController, NSMenuDelegate {
     
     @objc
     func disconnectAction() {
-        if let group = self.eventGroup, let apns = self.apnsConnection {
+        if let group = eventGroup, let apns = apnsConnection {
             do {
                 try apns.close().wait()
                 try group.syncShutdownGracefully()
                 
-                self.switchConnectButton(isConnected: false)
-                self.pushButton.isEnabled = false
+                switchConnectButton(isConnected: false)
+                pushButton.isEnabled = false
             } catch {
                 print(error)
             }
@@ -152,51 +155,44 @@ class P8PushViewController: NSViewController, NSMenuDelegate {
     
     @IBAction func pushAction(_ sender: Any) {
         
-        guard let apns = self.apnsConnection else {
+        guard let apns = apnsConnection else {
+            errorLabel.stringValue = "no connection!"
             return
         }
         
-        self.deviceToken = self.deviceTokenTextField.stringValue
+        let deviceToken = deviceTokenTextField.stringValue
         
-        guard let deviceToken = self.deviceToken else {
+        guard deviceToken.count > 0 else {
+            errorLabel.stringValue = "deviceToken empty!"
             return
         }
         
-        self.pushTitle = self.titleTextField.stringValue
-        self.pushSubtitle = self.subtitleTextField.stringValue
-        self.pushBody = self.bodyTextField.stringValue
+        let title = titleTextField.stringValue
+        let pushSubtitle = subtitleTextField.stringValue
+        let body = bodyTextField.stringValue
         
-        let payload = self.appDataTextField.stringValue
+        let payload = appDataTextField.stringValue
         
-        guard let title = self.pushTitle, let body = self.pushBody else {
+        guard title.count > 0 else {
             return
-        }
-        
-        struct BasicNotification: APNSwiftNotification {
-            let payload: String
-            let aps: APNSwiftPayload
-            init(payload: String, aps: APNSwiftPayload) {
-                self.payload = payload
-                self.aps = aps
-            }
         }
         
         do {
             
-            let aps = APNSwiftPayload(alert: .init(title: title, subtitle: self.pushSubtitle ?? "", body: body), badge: 1, hasContentAvailable: true)
+            let aps = APNSwiftPayload(alert: .init(title: title, subtitle: pushSubtitle, body: body), badge: 1, hasContentAvailable: true)
             try apns.send(BasicNotification(payload: payload, aps: aps), pushType: .alert, to: deviceToken).wait()
-            self.errorLabel.stringValue = ""
+            errorLabel.stringValue = ""
             
         } catch {
-            self.errorLabel.stringValue = "\(error)"
+            errorLabel.stringValue = "\(error)"
             print(error)
         }
 
     }
     
     private func switchConnectButton(isConnected: Bool) {
-        self.connectButton.title = isConnected ? "Disconnect" : "Connect"
-        self.connectButton.action = isConnected ? #selector(disconnectAction) : #selector(connectAction)
+        connectButton.title = isConnected ? "Disconnect" : "Connect"
+        connectButton.action = isConnected ? #selector(disconnectAction) : #selector(connectAction)
     }
     
 }

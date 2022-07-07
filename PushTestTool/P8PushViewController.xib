@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -27,11 +26,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="337"/>
+            <rect key="frame" x="0.0" y="0.0" width="588" height="458"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v2f-Xj-8LR">
-                    <rect key="frame" x="114" y="290" width="320" height="25"/>
+                    <rect key="frame" x="114" y="411" width="428" height="25"/>
                     <popUpButtonCell key="cell" type="push" title="请选择证书(.p8)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" pullsDown="YES" selectedItem="UCj-8c-bHC" id="7kM-vl-Bab">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -43,7 +42,7 @@
                     </popUpButtonCell>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xQI-wP-b5z">
-                    <rect key="frame" x="18" y="296" width="61" height="16"/>
+                    <rect key="frame" x="18" y="417" width="61" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="选择证书:" id="x1E-Te-tlA">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -51,7 +50,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2JB-E5-GRf">
-                    <rect key="frame" x="117" y="294" width="313" height="20"/>
+                    <rect key="frame" x="117" y="415" width="421" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="m0h-79-SpA"/>
                     </constraints>
@@ -64,7 +63,7 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FlY-W5-7yJ">
-                    <rect key="frame" x="117" y="258" width="120" height="21"/>
+                    <rect key="frame" x="117" y="379" width="120" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="9gN-Nz-0AM"/>
                         <constraint firstAttribute="width" constant="120" id="PLP-6g-oEi"/>
@@ -76,7 +75,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VS2-Ix-bsJ">
-                    <rect key="frame" x="262" y="258" width="120" height="21"/>
+                    <rect key="frame" x="262" y="379" width="120" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="0JM-7c-T33"/>
                         <constraint firstAttribute="height" constant="21" id="4ie-Lh-lRX"/>
@@ -88,7 +87,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9eG-5i-Nz2">
-                    <rect key="frame" x="18" y="179" width="84" height="16"/>
+                    <rect key="frame" x="18" y="300" width="84" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="DeviceToken:" id="HQc-tB-5EX">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -96,7 +95,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ds2-EJ-o81">
-                    <rect key="frame" x="117" y="176" width="313" height="21"/>
+                    <rect key="frame" x="117" y="297" width="421" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="zXd-GK-fVi"/>
                     </constraints>
@@ -107,7 +106,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r2Z-QA-eeG">
-                    <rect key="frame" x="18" y="220" width="67" height="16"/>
+                    <rect key="frame" x="18" y="341" width="67" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Bundel ID:" id="MsQ-Tm-ajT">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -115,7 +114,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2z8-7Q-bxD">
-                    <rect key="frame" x="117" y="217" width="313" height="21"/>
+                    <rect key="frame" x="117" y="338" width="421" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="X2R-77-SA4"/>
                     </constraints>
@@ -126,7 +125,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hNy-BM-Nl6">
-                    <rect key="frame" x="18" y="138" width="61" height="16"/>
+                    <rect key="frame" x="18" y="259" width="61" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="通知内容:" id="pBH-38-SFK">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -134,7 +133,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mG7-F0-6Bd">
-                    <rect key="frame" x="117" y="135" width="120" height="21"/>
+                    <rect key="frame" x="117" y="256" width="120" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="gR9-H0-M6h"/>
                         <constraint firstAttribute="width" constant="120" id="vu7-yR-Ch0"/>
@@ -146,7 +145,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OWh-TX-DpP">
-                    <rect key="frame" x="262" y="135" width="168" height="21"/>
+                    <rect key="frame" x="262" y="256" width="276" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="2yK-Qj-33f"/>
                     </constraints>
@@ -157,7 +156,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tnI-Xh-n6k">
-                    <rect key="frame" x="117" y="99" width="313" height="21"/>
+                    <rect key="frame" x="117" y="220" width="421" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="PL0-k6-4eO"/>
                     </constraints>
@@ -168,7 +167,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N8p-ud-hCa">
-                    <rect key="frame" x="117" y="54" width="313" height="30"/>
+                    <rect key="frame" x="117" y="175" width="421" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="SqD-8x-3mn"/>
                     </constraints>
@@ -179,7 +178,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="DBb-3a-Qh0">
-                    <rect key="frame" x="115" y="-6" width="317" height="45"/>
+                    <rect key="frame" x="115" y="115" width="425" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="WbI-Mc-bOX"/>
                     </constraints>
@@ -214,7 +213,7 @@
                     </popUpButtonCell>
                 </popUpButton>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tM8-Wg-xed">
-                    <rect key="frame" x="323" y="21" width="114" height="33"/>
+                    <rect key="frame" x="431" y="21" width="114" height="33"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="07z-AX-1wf"/>
                         <constraint firstAttribute="width" constant="100" id="1pS-2n-1fo"/>
@@ -228,7 +227,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zrO-bR-850">
-                    <rect key="frame" x="211" y="21" width="114" height="32"/>
+                    <rect key="frame" x="319" y="21" width="114" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="XH2-fI-WVq"/>
                     </constraints>
@@ -286,7 +285,7 @@
                 <constraint firstAttribute="trailing" secondItem="tM8-Wg-xed" secondAttribute="trailing" constant="50" id="wSh-oF-YDP"/>
                 <constraint firstItem="N8p-ud-hCa" firstAttribute="top" secondItem="tnI-Xh-n6k" secondAttribute="bottom" constant="15" id="ysy-ES-GI6"/>
             </constraints>
-            <point key="canvasLocation" x="-135" y="186.5"/>
+            <point key="canvasLocation" x="-81" y="247"/>
         </customView>
     </objects>
 </document>

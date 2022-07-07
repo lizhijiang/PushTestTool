@@ -10,9 +10,9 @@ import Cocoa
 class PushTypeViewController: NSViewController {
     
     var pushTypeView: NSTableView?
-    var typeChangeCallback: ((Int) -> ())?
+    var typeChangeCallback: ((Int) -> Void)?
     
-    init(typeChange: @escaping (Int) -> ()) {
+    init(typeChange: @escaping (Int) -> Void) {
         self.typeChangeCallback = typeChange
         super.init(nibName: nil, bundle: nil)
     }
