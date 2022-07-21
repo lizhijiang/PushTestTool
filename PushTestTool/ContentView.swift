@@ -26,7 +26,7 @@ struct ContentView: View {
     @State var filePath: String?
     @State var teamID: String = ""
     @State var keyID: String = ""
-    @State var bundelID: String = "" 
+    @State var bundleID: String = "" 
     @State var isConnected: Bool = false
     
     @State var deviceToken: String = ""
@@ -61,8 +61,8 @@ struct ContentView: View {
                 }
                 Spacer(minLength: 20)
                 VStack(alignment: .leading) {
-                    Text("BundelID").font(.system(size: 12))
-                    TextField("BundelID", text: $bundelID)
+                    Text("BundleID").font(.system(size: 12))
+                    TextField("BundleID", text: $bundleID)
                 }
             }
             HStack {
@@ -123,8 +123,8 @@ struct ContentView: View {
             connectError = "Please Select a .p8 File"
             return
         }
-        guard teamID.count > 0, keyID.count > 0, bundelID.count > 0 else {
-            connectError = "TeamID/KeyID/BundelID missing!"
+        guard teamID.count > 0, keyID.count > 0, bundleID.count > 0 else {
+            connectError = "TeamID/KeyID/BundleID missing!"
             return
         }
         connectError = nil
@@ -136,7 +136,7 @@ struct ContentView: View {
                                                             .jwt(key: .private(filePath: filePath),
                                                                  keyIdentifier: JWKIdentifier(string: keyID),
                                                                  teamIdentifier: teamID),
-                                                        topic: bundelID,
+                                                        topic: bundleID,
                                                         environment: environment)
             
             apnsConnection = try APNSwiftConnection.connect(configuration: apnsConfig, on: group.next()).wait()
