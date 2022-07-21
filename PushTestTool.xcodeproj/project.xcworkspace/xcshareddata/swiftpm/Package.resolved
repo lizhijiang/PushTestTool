@@ -3,7 +3,7 @@
     {
       "identity" : "apnswift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kylebrowning/APNSwift.git",
+      "location" : "https://github.com/swift-server-community/APNSwift.git",
       "state" : {
         "revision" : "99a3c7bb5fd211009438fb386d18c94bb2f63b17",
         "version" : "4.0.0"
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/vapor/jwt-kit.git",
       "state" : {
-        "revision" : "6055fe8439769aa3646a3c797d573ce7305849c8",
-        "version" : "4.2.0"
+        "revision" : "aa7d9cd805b10c1ca17dfc53062ffbc695469cf4",
+        "version" : "4.6.1"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-crypto.git",
       "state" : {
-        "revision" : "9680b7251cd2be22caaed8f1468bd9e8915a62fb",
-        "version" : "1.1.2"
+        "revision" : "d9825fa541df64b1a7b182178d61b9a82730d01f",
+        "version" : "2.1.0"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-log.git",
       "state" : {
-        "revision" : "173f567a2dfec11d74588eea82cecea555bdc0bc",
-        "version" : "1.4.0"
+        "revision" : "5d66f7ba25daf4f94100e7022febf3c75e37a6c7",
+        "version" : "1.4.2"
       }
     },
     {
@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio-http2.git",
       "state" : {
-        "revision" : "78ddbdfca10f64e4399da37c63372fd8db232152",
-        "version" : "1.15.0"
+        "revision" : "108ac15087ea9b79abb6f6742699cf31de0e8772",
+        "version" : "1.22.0"
       }
     },
     {
@@ -59,8 +59,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio-ssl.git",
       "state" : {
-        "revision" : "fd5f38b0039148e76c2e863a2fc868cc39bb451b",
-        "version" : "2.20.1"
+        "revision" : "c30c680c78c99afdabf84805a83c8745387c4ac7",
+        "version" : "2.20.2"
       }
     }
   ],
