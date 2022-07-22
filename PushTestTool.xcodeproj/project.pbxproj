@@ -11,6 +11,7 @@
 		A97CCAA32887A6770059100B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CCAA22887A6770059100B /* ContentView.swift */; };
 		A97CCAA52887A6780059100B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A97CCAA42887A6780059100B /* Assets.xcassets */; };
 		A97CCAA82887A6780059100B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A97CCAA72887A6780059100B /* Preview Assets.xcassets */; };
+		A98EB57D288A7FEC001949D5 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98EB57C288A7FEC001949D5 /* PushManager.swift */; };
 		A9AB306D2889314200DF62BB /* APNSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A9AB306C2889314200DF62BB /* APNSwift */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +22,7 @@
 		A97CCAA42887A6780059100B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A97CCAA72887A6780059100B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A97CCAA92887A6780059100B /* PushTestTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushTestTool.entitlements; sourceTree = "<group>"; };
+		A98EB57C288A7FEC001949D5 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				A97CCAA02887A6770059100B /* PushTestToolApp.swift */,
 				A97CCAA22887A6770059100B /* ContentView.swift */,
+				A98EB57C288A7FEC001949D5 /* PushManager.swift */,
 				A97CCAA42887A6780059100B /* Assets.xcassets */,
 				A97CCAA92887A6780059100B /* PushTestTool.entitlements */,
 				A97CCAA62887A6780059100B /* Preview Content */,
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A98EB57D288A7FEC001949D5 /* PushManager.swift in Sources */,
 				A97CCAA32887A6770059100B /* ContentView.swift in Sources */,
 				A97CCAA12887A6770059100B /* PushTestToolApp.swift in Sources */,
 			);

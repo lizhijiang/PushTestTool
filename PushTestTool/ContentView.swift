@@ -26,8 +26,7 @@ struct ContentView: View {
     @State var filePath: String?
     @State var teamID: String = ""
     @State var keyID: String = ""
-    @State var bundleID: String = "" 
-    @State var isConnected: Bool = false
+    @State var bundleID: String = ""
     
     @State var deviceToken: String = ""
     
@@ -35,19 +34,14 @@ struct ContentView: View {
     @State var content: String = ""
     @State var testUrl: String = ""
     
-    @State var connectError: String?
-    @State var pushError: String?
-    
-    //@State var apnsClient: APNSClient?
-    @State var apnsConnection: APNSwiftConnection?
-    @State var eventGroup: MultiThreadedEventLoopGroup?
+    @StateObject var pushManager = PushManager()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Button("Select .p8 File 📃 ") {
+            Button("Select a .p8 File 📃 ") {
                 filePath = chooseP8File()
             }
-            Text(filePath ?? " Not choose any file")
+            Text(filePath ?? " Not selecting any file")
             Divider()
             HStack {
                 VStack(alignment: .leading) {
@@ -66,18 +60,18 @@ struct ContentView: View {
                 }
             }
             HStack {
-                Button(isConnected ? "Disconnect 🚧 " : "Connect 🛰 ") {
-                    if isConnected {
-                        disconnect()
+                Button(pushManager.isConnected ? "Disconnect 🚧 " : "Connect 🛰 ") {
+                    if pushManager.isConnected {
+                        pushManager.disconnect()
                     } else {
-                        connectToApns()
+                        pushManager.connectToApns(with: filePath, teamID: teamID, keyID: keyID, bundleID: bundleID, isProduction: isProduction)
                     }
                 }
-                Toggle("Production", isOn: $isProduction).disabled(isConnected)
-                Text(connectError ?? "").foregroundColor(.red)
+                Toggle("Production", isOn: $isProduction).disabled(pushManager.isConnected)
+                Text(pushManager.connectError ?? "").foregroundColor(.red)
             }
             Divider()
-            if isConnected {
+            if pushManager.isConnected {
                 VStack(alignment: .leading, spacing: 20) {
                     VStack(alignment: .leading) {
                         Text("DeviceToken").font(.system(size: 12))
@@ -97,9 +91,9 @@ struct ContentView: View {
                     
                     HStack {
                         Button("Push Message 🚀 ") {
-                            pushMessage()
+                            pushManager.pushMessage(with: deviceToken, title: title, body: content, custom: testUrl)
                         }
-                        Text(pushError ?? "").foregroundColor(.red)
+                        Text(pushManager.pushError ?? "").foregroundColor(.red)
                     }
                 }
             }
@@ -117,155 +111,6 @@ struct ContentView: View {
             return nil
         }
     }
-    
-    func connectToApns() {
-        guard let filePath = filePath else {
-            connectError = "Please Select a .p8 File"
-            return
-        }
-        guard teamID.count > 0, keyID.count > 0, bundleID.count > 0 else {
-            connectError = "TeamID/KeyID/BundleID missing!"
-            return
-        }
-        connectError = nil
-        
-        let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-        let environment: APNSwiftConfiguration.Environment = isProduction ? .production : .sandbox
-        do {
-            let apnsConfig = try APNSwiftConfiguration(authenticationMethod:
-                                                            .jwt(key: .private(filePath: filePath),
-                                                                 keyIdentifier: JWKIdentifier(string: keyID),
-                                                                 teamIdentifier: teamID),
-                                                        topic: bundleID,
-                                                        environment: environment)
-            
-            apnsConnection = try APNSwiftConnection.connect(configuration: apnsConfig, on: group.next()).wait()
-            eventGroup = group
-            
-            isConnected = true
-            
-        } catch {
-            connectError = "Connect Failed!"
-            print(error)
-        }
-        
-    }
-    
-    func disconnect() {
-        if let group = eventGroup, let apns = apnsConnection {
-            do {
-                try apns.close().wait()
-                try group.syncShutdownGracefully()
-                
-                isConnected = false
-                
-            } catch {
-                connectError = "Disconnect Failed!"
-                print(error)
-            }
-        }
-    }
-    
-    func pushMessage() {
-        guard let apnsConnection = apnsConnection else {
-            return
-        }
-        guard deviceToken.count > 0 else {
-            pushError = "DeviceToken missing!"
-            return
-        }
-        guard title.count > 0 else {
-            pushError = "Title missing!"
-            return
-        }
-        
-        pushError = nil
-
-        do {
-            let aps = APNSwiftPayload(alert: .init(title: title, subtitle: "", body: content), badge: 1, hasContentAvailable: true)
-            try apnsConnection.send(CustomNotification(aps: aps, custom: testUrl), pushType: .alert, to: deviceToken).wait()
-        } catch {
-            pushError = "\(error.localizedDescription)"
-            print(error)
-        }
-        
-    }
-    
-    /*
-    func connect() -> APNSClient? {
-        guard let filePath = filePath else {
-            errorMsg = "请选择证书文件"
-            return nil
-        }
-        guard teamID.count > 0, keyID.count > 0, bundelID.count > 0 else {
-            errorMsg = "请填写teamID/KeyID/bundelID"
-            return nil
-        }
-        errorMsg = nil
-        
-        
-        do {
-            let authenticationConfig: APNSConfiguration.Authentication = .init(
-                privateKey: try .loadFrom(filePath: filePath),
-                teamIdentifier: teamID,
-                keyIdentifier: keyID
-            )
-            
-            let apnsConfig = APNSConfiguration(
-                authenticationConfig: authenticationConfig,
-                topic: bundelID,
-                environment: isProduction ? .production : .sandbox,
-                eventLoopGroupProvider: .createNew
-            )
-            
-            isConnected = true
-            
-            return APNSClient(configuration: apnsConfig)
-            
-        } catch {
-            isConnected = false
-            errorMsg = "连接失败"
-            print("Unexpected error: \(error).")
-        }
-        
-        return nil
-    }
-     
-    
-    func disconnect() {
-        guard let apnsClient = apnsClient else {
-            return
-        }
-        Task {
-            do {
-                try await apnsClient.shutdown()
-                self.apnsClient = nil
-                isConnected = false
-            } catch {
-                errorMsg = "断开连接失败"
-            }
-        }
-    }
-     */
-    
-    /*
-    func pushMessage() {
-        guard let apnsClient = apnsClient else {
-            return
-        }
-        guard deviceToken.count > 0 else {
-            return
-        }
-        
-        let aps = APNSPayload(alert: .init(title: title, subtitle: subtitle, body: ""), hasContentAvailable: true)
-        let notification = TTNotification(aps: aps)
-        Task {
-            try await apnsClient.send(notification, pushType: .alert, to: deviceToken)
-        }
-        
-    }
-    */
-    
 
     
 }
