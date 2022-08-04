@@ -24,9 +24,9 @@ struct CustomNotification: APNSwiftNotification {
 struct ContentView: View {
     @State var isProduction: Bool = false
     @State var filePath: String?
-    @State var teamID: String = ""
-    @State var keyID: String = ""
-    @State var bundleID: String = ""
+    @State var teamID: String = UserDefaults.standard.string(forKey: "teamID") ?? ""
+    @State var keyID: String = UserDefaults.standard.string(forKey: "keyID") ?? ""
+    @State var bundleID: String = UserDefaults.standard.string(forKey: "bundleID") ?? ""
     
     @State var deviceToken: String = ""
     
@@ -65,6 +65,9 @@ struct ContentView: View {
                         pushManager.disconnect()
                     } else {
                         pushManager.connectToApns(with: filePath, teamID: teamID, keyID: keyID, bundleID: bundleID, isProduction: isProduction)
+                        UserDefaults.standard.set(teamID, forKey: "teamID")
+                        UserDefaults.standard.set(keyID, forKey: "keyID")
+                        UserDefaults.standard.set(bundleID, forKey: "bundleID")
                     }
                 }
                 Toggle("Production", isOn: $isProduction).disabled(pushManager.isConnected)
